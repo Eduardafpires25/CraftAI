@@ -119,7 +119,7 @@ export function Header() {
                     className="absolute right-0 top-full mt-2 w-56 card p-2 shadow-xl"
                     onMouseLeave={() => setMenuOpen(false)}
                   >
-                    <div className="px-3 py-2 text-xs text-slate-500 dark:text-slate-400">
+                    <div className="px-3 py-2 text-xs text-slate-500 dark:text-slate-400 truncate overflow-hidden">
                       {user.email}
                     </div>
                     {iterationsLimit && iterationsLimit.enabled && (
