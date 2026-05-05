@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --scrollbar-track: #f1f5f9;
+    --scrollbar-thumb: #94a3b8;
+    --scrollbar-thumb-hover: #7c5cfa;
+    --scrollbar-border: #f1f5f9;
+  }
+  .dark {
+    color-scheme: dark;
+    --scrollbar-track: #15102b;
+    --scrollbar-thumb: #252046;
+    --scrollbar-thumb-hover: #6b3fef;
+    --scrollbar-border: #15102b;
+  }
+
+  html, body, #root {
+    height: 100%;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    @apply bg-white text-slate-900;
+  }
+
+  .dark body {
+    @apply bg-ink-900 text-slate-100;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(124, 92, 250, 0.25), transparent 70%),
+      radial-gradient(circle at 90% 20%, rgba(124, 92, 250, 0.12), transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl
+           bg-brand-500 hover:bg-brand-600 text-white font-medium
+           transition-colors shadow-glow;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg
+           text-slate-700 hover:bg-slate-100
+           dark:text-slate-200 dark:hover:bg-ink-700/60
+           transition-colors;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl
+           border border-slate-300 hover:bg-slate-100
+           dark:border-ink-600 dark:hover:bg-ink-700/60
+           text-slate-700 dark:text-slate-200
+           transition-colors;
+  }
+  .card {
+    @apply bg-white border border-slate-200 rounded-2xl
+           dark:bg-ink-800/60 dark:border-ink-600/60
+           backdrop-blur;
+  }
+  .input {
+    @apply w-full px-4 py-2.5 rounded-xl border bg-white
+           border-slate-300 text-slate-900
+           dark:bg-ink-800 dark:border-ink-600 dark:text-slate-100
+           focus:outline-none focus:ring-2 focus:ring-brand-500
+           placeholder:text-slate-400 dark:placeholder:text-slate-500;
+  }
+  .label {
+    @apply block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5;
+  }
+}
+
+/* Scrollbar customizada para tema claro e escuro */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 6px;
+  border: 2px solid var(--scrollbar-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Scrollbar para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
